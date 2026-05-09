@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Process Portfolio | Group D-6</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+:root{
+  --bg1:#0b1020;
+  --bg2:#1a1b4b;
+  --bg3:#4b1d95;
+  --card:rgba(255,255,255,0.08);
+  --card-2:rgba(255,255,255,0.05);
+  --line:rgba(255,255,255,0.10);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.82);
+  --soft:rgba(255,255,255,0.66);
+  --accent:#8b5cf6;
+  --accent2:#6366f1;
+  --accent3:#c084fc;
+  --shadow:0 18px 50px rgba(0,0,0,0.26);
+}
+
+body{
+  font-family:"Poppins",sans-serif;
+  color:var(--text);
+  line-height:1.8;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(99,102,241,0.18), transparent 22%),
+    radial-gradient(circle at 88% 8%, rgba(192,132,252,0.14), transparent 18%),
+    radial-gradient(circle at 80% 80%, rgba(139,92,246,0.10), transparent 18%),
+    linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 38px;
+  background:rgba(10,10,25,0.52);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+
+nav h2{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.3px;
+}
+
+nav .nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.86;
+  transition:0.25s;
+}
+
+nav a:hover{
+  opacity:1;
+  color:#ddd6fe;
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:116px 24px 76px;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:620px;
+  height:620px;
+  left:50%;
+  top:-170px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(139,92,246,0.42), transparent 68%);
+  filter:blur(78px);
+}
+
+.hero h1{
+  position:relative;
+  font-size:62px;
+  line-height:1.05;
+  font-weight:800;
+  margin-bottom:18px;
+  background:linear-gradient(90deg,#f3e8ff,#c4b5fd,#a5b4fc);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  position:relative;
+  max-width:980px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.hero-badges{
+  position:relative;
+  margin-top:28px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.badge{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.10);
+  font-size:13px;
+}
+
+.container{
+  width:min(1240px, calc(100% - 40px));
+  margin:0 auto 80px;
+}
+
+section{
+  padding:42px 0 18px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:20px;
+  margin-bottom:24px;
+  flex-wrap:wrap;
+}
+
+.section-title{
+  font-size:36px;
+  font-weight:800;
+  color:#faf5ff;
+}
+
+.section-subtitle{
+  max-width:860px;
+  font-size:15px;
+  color:var(--soft);
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:30px;
+  backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  margin-bottom:22px;
+}
+
+.card h3{
+  font-size:24px;
+  margin-bottom:12px;
+  color:#f5f3ff;
+}
+
+.card h4{
+  font-size:18px;
+  margin-bottom:10px;
+  color:#ede9fe;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:15px;
+}
+
+.glass-panel{
+  background:linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:28px;
+  padding:34px;
+  box-shadow:var(--shadow);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:22px;
+}
+
+.col-12{grid-column:span 12;}
+.col-8{grid-column:span 8;}
+.col-7{grid-column:span 7;}
+.col-6{grid-column:span 6;}
+.col-5{grid-column:span 5;}
+.col-4{grid-column:span 4;}
+.col-3{grid-column:span 3;}
+
+.mini-card,
+.feature,
+.story-card,
+.metric-card,
+.alt-card,
+.team-card,
+.info-box{
+  background:var(--card-2);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:22px;
+  padding:22px;
+  height:100%;
+  transition:0.28s ease;
+}
+
+.mini-card:hover,
+.feature:hover,
+.story-card:hover,
+.metric-card:hover,
+.alt-card:hover,
+.team-card:hover,
+.info-box:hover{
+  transform:translateY(-5px);
+  background:rgba(255,255,255,0.085);
+}
+
+.highlight{
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:8px;
+  font-weight:700;
+  background:linear-gradient(90deg, rgba(99,102,241,0.28), rgba(168,85,247,0.26));
+  border:1px solid rgba(255,255,255,0.08);
+  color:#fff;
+}
+
+.highlight-soft{
+  font-weight:600;
+  color:#f3e8ff;
+  border-bottom:2px solid rgba(196,181,253,0.55);
+  padding-bottom:1px;
+}
+
+ul.clean{
+  padding-left:18px;
+  color:var(--muted);
+}
+
+ul.clean li{
+  margin:9px 0;
+}
+
+.keyword-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+
+.keyword{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#f5f3ff;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+
+.metric-card{
+  text-align:center;
+}
+
+.metric-card h3{
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+.visual-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.visual-grid.two{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.visual-box{
+  min-height:230px;
+  background:rgba(255,255,255,0.04);
+  border:1px dashed rgba(255,255,255,0.16);
+  border-radius:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:16px;
+  color:var(--soft);
+  overflow:hidden;
+}
+
+.visual-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+.visual-box.contain img,
+.wide-visual-box img,
+.persona-box img{
+  object-fit:contain;
+}
+
+.wide-visual-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.wide-visual-box{
+  min-height:340px;
+  background:rgba(255,255,255,0.04);
+  border:1px dashed rgba(255,255,255,0.16);
+  border-radius:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:16px;
+  color:var(--soft);
+  overflow:hidden;
+}
+
+.wide-visual-box img{
+  width:100%;
+  height:100%;
+  border-radius:16px;
+  background:rgba(255,255,255,0.03);
+}
+
+.split-hero{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:22px;
+  align-items:stretch;
+}
+
+.callout{
+  background:linear-gradient(135deg, rgba(99,102,241,0.18), rgba(168,85,247,0.12));
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:22px;
+  padding:22px;
+}
+
+.callout h4{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+
+.persona-box{
+  min-height:250px;
+  background:rgba(255,255,255,0.04);
+  border:1px dashed rgba(255,255,255,0.16);
+  border-radius:22px;
+  padding:14px;
+  overflow:hidden;
+}
+
+.persona-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.journey-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.journey-card{
+  min-height:190px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:22px;
+  padding:22px;
+  transition:0.28s ease;
+}
+
+.journey-card:hover{
+  transform:translateY(-5px);
+  background:rgba(255,255,255,0.085);
+}
+
+.tag{
+  display:inline-block;
+  margin-top:12px;
+  font-size:12px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#6366f1,#8b5cf6);
+  color:#fff;
+}
+
+.alt-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.alt-card.accepted{
+  outline:2px solid rgba(168,85,247,0.48);
+  box-shadow:0 0 0 6px rgba(168,85,247,0.07);
+}
+
+.flow-row{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  align-items:center;
+  margin-top:16px;
+}
+
+.flow-box{
+  min-height:112px;
+  border-radius:20px;
+  padding:18px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.arrow{
+  text-align:center;
+  font-size:26px;
+  color:#ddd6fe;
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.story-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.story-badge{
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(245,158,11,0.12);
+  border:1px solid rgba(245,158,11,0.18);
+  color:#fde68a;
+}
+
+.compare-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.compare-box{
+  min-height:220px;
+  border-radius:22px;
+  padding:22px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  min-width:760px;
+  border-collapse:collapse;
+  color:var(--muted);
+}
+
+table th, table td{
+  border:1px solid rgba(255,255,255,0.10);
+  padding:14px;
+  text-align:left;
+  vertical-align:top;
+  font-size:14px;
+}
+
+table th{
+  background:rgba(255,255,255,0.08);
+  color:#f5f3ff;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.team-card{
+  text-align:center;
+}
+
+.team-avatar{
+  width:96px;
+  height:96px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,0.18);
+  box-shadow:0 10px 28px rgba(0,0,0,0.22);
+  background:linear-gradient(135deg,#6366f1,#c084fc);
+}
+
+.team-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+
+.timeline{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.timeline-step{
+  position:relative;
+  background:rgba(255,255,255,0.055);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:22px;
+  padding:20px;
+  min-height:210px;
+}
+
+.timeline-step::before{
+  content:"";
+  position:absolute;
+  top:24px;
+  left:20px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#c084fc,#6366f1);
+  box-shadow:0 0 0 6px rgba(139,92,246,0.16);
+}
+
+.timeline-step h4{
+  padding-left:24px;
+  margin-bottom:10px;
+}
+
+.timeline-step p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.align-table td:first-child,
+.align-table td:nth-child(2),
+.align-table td:nth-child(3){
+  width:25%;
+}
+
+.logic-chain{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+
+.logic-box{
+  min-height:120px;
+  border-radius:20px;
+  padding:18px;
+  background:rgba(255,255,255,0.055);
+  border:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+}
+
+.ethics-grid,
+.vibe-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.quote-box{
+  border-left:4px solid rgba(192,132,252,0.72);
+  background:rgba(255,255,255,0.045);
+  border-radius:18px;
+  padding:18px;
+  color:var(--muted);
+  height:100%;
+}
+
+@media(max-width:1100px){
+  .timeline,.logic-chain,.ethics-grid,.vibe-grid{grid-template-columns:1fr;}
+}
+
+.footer{
+  text-align:center;
+  color:var(--soft);
+  padding:50px 20px 80px;
+  font-size:14px;
+}
+
+.small{font-size:14px;}
+.tiny{font-size:12px;}
+
+@media(max-width:1100px){
+  .col-8,.col-7,.col-6,.col-5,.col-4,.col-3{grid-column:span 12;}
+  .visual-grid,.visual-grid.two,.story-grid,.alt-grid,.team-grid,.compare-grid,.wide-visual-grid,.journey-grid,.split-hero,.persona-layout,.persona-pair{
+    grid-template-columns:1fr;
+  }
+  .flow-row{grid-template-columns:1fr;}
+  .arrow{transform:rotate(90deg);}
+}
+
+@media(max-width:768px){
+  nav{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 18px;
+  }
+
+  .hero{
+    padding:88px 16px 54px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .section-title{
+    font-size:28px;
+  }
+
+  .container{
+    width:min(100% - 24px, 1240px);
+  }
+
+  .wide-visual-box{
+    min-height:240px;
+  }
+
+  .persona-box{
+    min-height:220px;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>Group D-6</h2>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#alignment">Alignment</a>
+    <a href="#motivation">Research</a>
+    <a href="#requirements">Requirements</a>
+    <a href="#ideation">Ideation</a>
+    <a href="#technical">Technical</a>
+    <a href="#stories">Stories</a>
+    <a href="#evaluation">Evaluation</a>
+    <a href="#vibecoding">Vibe Coding</a>
+    <a href="#team">Team</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Where Tech Meets Heart</h1>
+  <p>
+    A campus exploration system that combines <span class="highlight">AR guidance</span>,
+    storytelling, geofenced triggers, and route planning to help high school graduates
+    and their families understand XJTLU in a more engaging and less stressful way.
+  </p>
+  <div class="hero-badges">
+    <span class="badge">Track: Social</span>
+    <span class="badge">Platform: WeChat Mini Program / Web App</span>
+    <span class="badge">Core Tech: AR + Geofencing + Gaode API</span>
+    <span class="badge">Target Users: High School Graduates & Parents</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Project Overview</h2>
+        <p class="section-subtitle">
+          This portfolio presents our iterative design process from problem framing and research
+          to prototyping, implementation, evaluation, and reflection.
+        </p>
+      </div>
+    </div>
+
+    <div class="split-hero">
+      <div class="glass-panel">
+        <h3 style="font-size:26px;margin-bottom:14px;">What the system does</h3>
+        <p style="font-size:16px;">
+          Our project transforms campus exploration into a
+          <span class="highlight">playful and guided experience</span>.
+          Instead of relying only on maps, users receive
+          <span class="highlight-soft">location-based information automatically</span>
+          when they approach key campus buildings.
+        </p>
+        <p style="margin-top:14px;font-size:15px;color:var(--muted);">
+          The experience combines route guidance, building explanations, and story-driven interaction
+          so users can understand not just where a place is, but why it matters.
+        </p>
+        <div class="keyword-row">
+          <span class="keyword">Low Cognitive Load</span>
+          <span class="keyword">Smart Trigger</span>
+          <span class="keyword">Story Navigation</span>
+          <span class="keyword">Open-day Support</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <h4>Key Design Focus</h4>
+        <ul class="clean">
+          <li>Human-centered campus exploration</li>
+          <li>Proactive information delivery</li>
+          <li>Simple and memorable wayfinding</li>
+          <li>More meaningful open-day experience</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric-card">
+        <h3>15m</h3>
+        <p>Auto-trigger distance</p>
+      </div>
+      <div class="metric-card">
+        <h3>2</h3>
+        <p>Navigation modes</p>
+      </div>
+      <div class="metric-card">
+        <h3>3</h3>
+        <p>Alpha testers</p>
+      </div>
+      <div class="metric-card">
+        <h3>86.5</h3>
+        <p>Average SUS score</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:22px;">
+      <h3>Visual Snapshot</h3>
+      <div class="visual-grid">
+        <div class="visual-box">
+          <img src="images/ui-home.jpg" alt="Home interface">
+        </div>
+        <div class="visual-box">
+          <img src="images/ui-route.jpg" alt="Route interface">
+        </div>
+        <div class="visual-box">
+          <img src="images/ui-ar.jpg" alt="AR interface">
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="timeline" style="margin-top:22px;">
+      <h3>Process Timeline</h3>
+      <p>
+        The timeline below explains how our project moved from initial research to final prototype refinement.
+        It also makes the connection between requirement discovery, design decisions, and evaluation more visible.
+      </p>
+      <div class="timeline">
+        <div class="timeline-step">
+          <h4>Week 1<br>Problem Framing</h4>
+          <p>Observed open-day campus visiting scenarios and identified that visitors need both directions and contextual understanding.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 2<br>User Research</h4>
+          <p>Defined primary and secondary users, created personas, and summarized key pain points from informal interviews and observations.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 3<br>Requirements</h4>
+          <p>Translated research findings into R1–R4 requirements, focusing on navigation clarity, building meaning, engagement, and low information burden.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 4<br>Prototyping</h4>
+          <p>Produced low-fi sketches, compared design alternatives, and selected a dynamic map/AR toggle to balance clarity and immersion.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 5<br>Evaluation</h4>
+          <p>Collected SUS scores and qualitative feedback from alpha testing, then identified problems in trigger visibility and story presentation.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 6<br>Iteration</h4>
+          <p>Refined hierarchy, route-story connection, audio support, and portfolio presentation to better align with HCI process evidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="alignment" style="margin-top:22px;">
+      <h3>Requirement → Design Goal → System Feature Mapping</h3>
+      <p>
+        To keep the portfolio logically aligned, we numbered the user requirements and mapped them to design goals,
+        prototype features, and evaluation evidence.
+      </p>
+      <div class="table-wrap" style="margin-top:18px;">
+        <table class="align-table">
+          <thead>
+            <tr>
+              <th>User Requirement</th>
+              <th>Design Goal</th>
+              <th>System Feature</th>
+              <th>Evaluation Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>R1:</strong> Reduce navigation confusion for first-time campus visitors.</td>
+              <td><strong>DG1:</strong> Lower cognitive load during movement.</td>
+              <td><strong>F1:</strong> Smart route guidance with map-based navigation.</td>
+              <td>Users reported that the route flow was easy to follow during alpha testing.</td>
+            </tr>
+            <tr>
+              <td><strong>R2:</strong> Help users understand what each building is used for.</td>
+              <td><strong>DG2:</strong> Connect physical spaces with academic meaning.</td>
+              <td><strong>F2:</strong> Story-rich building cards and audio introductions.</td>
+              <td>Feedback showed that users wanted more major-related and facility-related explanations.</td>
+            </tr>
+            <tr>
+              <td><strong>R3:</strong> Make campus exploration more engaging and memorable.</td>
+              <td><strong>DG3:</strong> Turn passive touring into interactive discovery.</td>
+              <td><strong>F3:</strong> AR overlay, progress tracking, and completion feedback.</td>
+              <td>Users described the AR/story mode as more attractive than a normal map.</td>
+            </tr>
+            <tr>
+              <td><strong>R4:</strong> Avoid overwhelming users with too much text or manual searching.</td>
+              <td><strong>DG4:</strong> Provide timely information only when it is needed.</td>
+              <td><strong>F4:</strong> Geofenced auto-triggered content when users approach a building.</td>
+              <td>Iteration focused on reducing text density and improving trigger visibility.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="logic-chain">
+        <div class="logic-box"><h4>Research</h4><p class="small">Visitors feel lost and overloaded.</p></div>
+        <div class="logic-box"><h4>Requirement</h4><p class="small">Clearer route and building meaning.</p></div>
+        <div class="logic-box"><h4>Design Goal</h4><p class="small">Lower burden, increase engagement.</p></div>
+        <div class="logic-box"><h4>Feature</h4><p class="small">AR, story, progress, auto-trigger.</p></div>
+        <div class="logic-box"><h4>Evaluation</h4><p class="small">SUS and feedback guide iteration.</p></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="motivation">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">01. Motivation & Research</h2>
+        <p class="section-subtitle">
+         Given that nowadays,
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>The Why</h3>
+      <p>
+        We chose the Social track because campus visits often create
+        <span class="highlight">cognitive overload</span>.
+        Users must understand maps, routes, and building functions at the same time.
+      </p>
+      <p style="margin-top:12px;">
+        Our design focuses on helping users understand
+        <span class="highlight-soft">what each place means</span>, not just where it is.
+        This makes the experience easier to follow and more engaging.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="col-6">
+        <div class="card">
+          <h3>The Gap: Academic Papers</h3>
+
+          <div class="mini-card" style="margin-bottom:14px;">
+            <h4>Campus Wayfinding Research</h4>
+            <p class="small">
+              ✔ Strong spatial guidance<br>
+              ✔ Useful navigation insights<br>
+              ✔ Practical campus orientation<br><br>
+              ✘ Limited emotional engagement<br>
+              ✘ Weak storytelling<br>
+              ✘ Less focus on open-day visitors
+            </p>
+          </div>
+
+          <div class="mini-card" style="margin-bottom:14px;">
+            <h4>AR Navigation Studies</h4>
+            <p class="small">
+              ✔ Reduces navigation difficulty<br>
+              ✔ Improves route understanding<br>
+              ✔ Engaging interaction form<br><br>
+              ✘ Often requires manual activation<br>
+              ✘ Less building interpretation<br>
+              ✘ Weak academic context
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h4>Multimodal Interaction Research</h4>
+            <p class="small">
+              ✔ Supports visual + audio guidance<br>
+              ✔ Helpful for accessibility<br>
+              ✔ Lowers missed information<br><br>
+              ✘ Not tailored to campus storytelling<br>
+              ✘ Weak place meaning explanation<br>
+              ✘ Limited playful design
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <h3>The Gap: Commercial Products</h3>
+
+          <div class="mini-card" style="margin-bottom:14px;">
+            <h4>Google Maps</h4>
+            <p class="small">
+              ✔ Strong navigation and usability<br>
+              ✔ Familiar interface<br>
+              ✔ Efficient routing<br><br>
+              ✘ No campus storytelling<br>
+              ✘ No proactive information<br>
+              ✘ Limited context understanding
+            </p>
+          </div>
+
+          <div class="mini-card" style="margin-bottom:14px;">
+            <h4>Campus Guide Apps</h4>
+            <p class="small">
+              ✔ Campus-specific POIs<br>
+              ✔ Helpful building lists<br>
+              ✔ Useful for first-time visitors<br><br>
+              ✘ Static browsing experience<br>
+              ✘ Weak immersion<br>
+              ✘ Users must search manually
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h4>Audio Guide Products</h4>
+            <p class="small">
+              ✔ Easy content delivery<br>
+              ✔ Reduces reading burden<br>
+              ✔ Good for passive listening<br><br>
+              ✘ Weak route integration<br>
+              ✘ No AR assistance<br>
+              ✘ Limited real-time context
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Stakeholders & Personas</h3>
+
+      <div style="margin-bottom:22px;">
+        <h4>Stakeholders</h4>
+        <p class="small" style="margin-bottom:12px;">
+          We considered different stakeholders because the open-day experience is not only used by students,
+          but also influenced by parents, ambassadors, and university staff.
+        </p>
+        <ul class="clean">
+          <li><strong>Primary users:</strong> high school graduates who want to explore majors, buildings, study spaces, and campus life.</li>
+          <li><strong>Secondary users:</strong> parents and first-time visitors who care about safety, learning environment, and facilities.</li>
+          <li><strong>Other stakeholders:</strong> student ambassadors and university staff who need to communicate campus information clearly.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Personas</h4>
+        <p class="small" style="margin-bottom:14px;">
+          The student persona highlights exploration and major choice, while the parent persona highlights trust,
+          environment, and practical campus information.
+        </p>
+
+        <div class="persona-pair" style="grid-template-columns:1fr;gap:18px;">
+          <div>
+            <h4 style="margin-bottom:6px;">Student Persona</h4>
+            <div class="persona-box">
+              <img src="images/persona-student.jpg" alt="Student persona">
+            </div>
+          </div>
+
+          <div>
+            <h4 style="margin-bottom:6px;">Parent Persona</h4>
+            <div class="persona-box">
+              <img src="images/persona-parent.jpg" alt="Parent persona">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
+  <section id="requirements">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">02. User Requirements</h2>
+        <p class="section-subtitle">
+          We translated research into journey pain points, functional needs, and evidence from real users.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>User Journey Map</h3>
+      <div class="visual-box contain" style="margin-top:16px;min-height:280px;">
+        <img src="images/user-journey-map.jpg" alt="User Journey Map">
+      </div>
+
+      <div class="journey-grid">
+        <div class="journey-card">
+          <h4>START</h4>
+          <p>
+            Users arrive on campus with limited knowledge of what to prioritize and where to begin.
+          </p>
+          <span class="tag">Emotion: Confused</span>
+        </div>
+
+        <div class="journey-card">
+          <h4>NAVIGATE</h4>
+          <p>
+            Users try to follow a route but may find it difficult to connect the map with the real environment.
+          </p>
+          <span class="tag">Emotion: Hesitant</span>
+        </div>
+
+        <div class="journey-card">
+          <h4>DISCOVER</h4>
+          <p>
+            Users arrive at a building but may not understand its purpose, including related majors or learning activities.
+          </p>
+          <span class="tag">Emotion: Curious</span>
+        </div>
+
+        <div class="journey-card">
+          <h4>ACHIEVE</h4>
+          <p>
+            Users want to leave the tour with a clear understanding of campus life instead of fragmented impressions.
+          </p>
+          <span class="tag">Emotion: Accomplished</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-6">
+        <div class="card">
+          <h3>Playful Requirements</h3>
+          <ul class="clean">
+            <li><span class="highlight">Automatic interaction</span> instead of manual searching</li>
+            <li>Clear and simple navigation flow</li>
+            <li><span class="highlight-soft">Engaging feedback</span> through progress and completion</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <h3>Additional User Needs</h3>
+          <ul class="clean">
+            <li>Simple explanation of building purpose</li>
+            <li>Clear connection to majors and courses</li>
+            <li>Low reading burden through audio support</li>
+            <li>Efficient visit planning on open day</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Evidence of Life</h3>
+      <p>
+        We conducted informal interviews and on-site observation to understand how visitors
+        experience campus tours and what support they expect.
+      </p>
+      <div class="visual-grid" style="margin-top:18px;">
+        <div class="visual-box"><img src="images/evidence1.jpg" alt="Evidence 1"></div>
+        <div class="visual-box"><img src="images/evidence2.jpg" alt="Evidence 2"></div>
+        <div class="visual-box"><img src="images/evidence3.jpg" alt="Evidence 3"></div>
+      </div>
+      <div class="visual-grid" style="margin-top:18px;">
+        <div class="visual-box"><img src="images/evidence4.jpg" alt="Evidence 4"></div>
+        <div class="visual-box"><img src="images/evidence5.jpg" alt="Evidence 5"></div>
+        <div class="visual-box"><img src="images/video-qr.jpg" alt="Video QR"></div>
+      </div>
+    </div>
+
+
+    <div class="card" id="ethics">
+      <h3>Ethical Considerations</h3>
+      <p>
+        Because our process involved user feedback, photos, and observation, we considered ethics before collecting evidence.
+        This helps make the portfolio process more responsible and transparent.
+      </p>
+      <div class="ethics-grid">
+        <div class="info-box">
+          <h4>Informed Consent</h4>
+          <p class="small">Participants were informed about the purpose of the study before interviews, testing, or photo recording. Participation was voluntary.</p>
+        </div>
+        <div class="info-box">
+          <h4>Privacy Protection</h4>
+          <p class="small">Personal identities are not shown in the final portfolio unless permission is given. Feedback is summarized rather than exposing private details.</p>
+        </div>
+        <div class="info-box">
+          <h4>Responsible Location Use</h4>
+          <p class="small">The prototype uses location only for nearby building triggers. The design does not require permanent storage of users' movement history.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- IDEATION -->
+  <section id="ideation">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">03. Ideation & Iteration</h2>
+        <p class="section-subtitle">
+          We explored multiple interface directions and refined the solution through low-fi and high-fi prototyping.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Low-Fi Sketch & Iteration Summary</h3>
+      <p>
+        We present one complete low-fidelity board together with the iteration summary
+        to show both early exploration and design evolution more clearly.
+      </p>
+
+      <div class="wide-visual-grid">
+        <div class="wide-visual-box">
+          <img src="images/lofi.jpg" alt="Low-fi sketch board">
+        </div>
+        <div class="wide-visual-box">
+          <img src="images/iteration-summary.jpg" alt="Iteration summary">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Design Alternatives</h3>
+      <p>
+        We did not choose the final layout only because it looked better. We compared alternatives based on cognitive load,
+        route awareness, and whether users could still observe the real campus while receiving guidance.
+      </p>
+      <div class="alt-grid" style="margin-top:18px;">
+        <div class="alt-card">
+          <h4>Option A: Split Screen</h4>
+          <p class="small">
+            Top half AR camera and bottom half 2D map.
+          </p>
+          <ul class="clean small" style="margin-top:10px;">
+            <li>Comprehensive information</li>
+            <li>Easy to compare route and environment</li>
+            <li>But visually crowded on mobile</li>
+          </ul>
+        </div>
+
+        <div class="alt-card">
+          <h4>Option B: AR-dominant</h4>
+          <p class="small">
+            Full-screen AR with a small floating map.
+          </p>
+          <ul class="clean small" style="margin-top:10px;">
+            <li>Immersive experience</li>
+            <li>Strong local guidance</li>
+            <li>But weaker global route awareness</li>
+          </ul>
+        </div>
+
+        <div class="alt-card accepted">
+          <h4>Option C: Dynamic Toggle</h4>
+          <p class="small">
+            2D map by default, AR appears when context requires it.
+          </p>
+          <ul class="clean small" style="margin-top:10px;">
+            <li>Reduces cognitive load</li>
+            <li><span class="highlight">Balances clarity and immersion</span></li>
+            <li>Better for open-day visitors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Low-Fi to High-Fi Progression</h3>
+      <div class="compare-grid">
+        <div class="compare-box">
+          <h4>Low-Fi Prototype</h4>
+          <p>
+            Early sketches focused on route entry, story pop-up timing, and the balance between map and AR layers.
+          </p>
+          <div class="visual-box contain" style="margin-top:16px;min-height:180px;">
+            <img src="images/lofi.jpg" alt="Low fidelity prototype">
+          </div>
+        </div>
+        <div class="compare-box">
+          <h4>High-Fi Prototype</h4>
+          <p>
+            Later iterations refined hierarchy, spacing, interaction clarity, and the visual quality of the interface.
+          </p>
+          <div class="visual-box contain" style="margin-top:16px;min-height:180px;">
+            <img src="images/hifi.jpg" alt="High fidelity prototype">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL -->
+  <section id="technical">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">04. Technical Implementation</h2>
+        <p class="section-subtitle">
+          The final prototype integrates interface design, trigger logic, and data flow into one coherent system.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>System Architecture</h3>
+      <div class="flow-row">
+        <div class="flow-box">
+          <h4>Mobile Device</h4>
+          <p class="small">Location, camera, and user interaction</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-box">
+          <h4>Mini Program / Web App</h4>
+          <p class="small">Map UI, AR layer, story interface</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-box">
+          <h4>Trigger Logic</h4>
+          <p class="small">Distance check and 15m activation</p>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-box">
+          <h4>Campus POI Data</h4>
+          <p class="small">Buildings, facilities, labels</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-box">
+          <h4>Gaode API</h4>
+          <p class="small">Routing and map service</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-box">
+          <h4>Story / Audio Layer</h4>
+          <p class="small">TTS, descriptions, content delivery</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-6">
+        <div class="card">
+          <h3>Core Features</h3>
+
+          <div class="feature">
+            <h4>📍 Smart Trigger</h4>
+            <p>Automatically provides information based on user location.</p>
+          </div>
+
+          <div class="feature" style="margin-top:14px;">
+            <h4>🧭 Dual Navigation</h4>
+            <p><span class="highlight-soft">Curated and smart routes</span> support different user needs.</p>
+          </div>
+
+          <div class="feature" style="margin-top:14px;">
+            <h4>🎧 Story Mode</h4>
+            <p>Explains buildings through short and clear descriptions.</p>
+          </div>
+
+          <div class="feature" style="margin-top:14px;">
+            <h4>📱 AR Overlay</h4>
+            <p>Bridges digital route guidance with the real campus environment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <h3>Prototype Links</h3>
+          <p><strong>Figma Prototype:</strong> https://www.figma.com/make/zAlDD24fINHjJgL6vvyKog/Design-WeChat-Mini-Program?t=9GTnhCyllxKmVOKq-1&preview-route=%2Fbuilding</p>
+          <p style="margin-top:10px;"><strong>Hosted System:</strong> Replace with your deployed project link</p>
+          <p style="margin-top:10px;"><strong>Source Repository:</strong> Replace with your GitHub link</p>
+        </div>
+
+        <div class="card">
+          <h3>Visual Hierarchy Upgrade</h3>
+          <p>
+            In later iterations, we improved spacing, section grouping, card contrast,
+            and image-supported storytelling so the portfolio reads more like a professional UX case study.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Individual Contributions</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Student ID</th>
+              <th>Main Contribution</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Yixin Hao</td>
+              <td>2362273</td>
+              <td>UI Design & Visual Refinement</td>
+              <td>Worked on interface aesthetics, layout quality, and visual presentation.</td>
+            </tr>
+            <tr>
+              <td>Yizhi Wang</td>
+              <td>2364133</td>
+              <td>Front-end Implementation</td>
+              <td>Built the HTML/CSS structure and integrated portfolio content.</td>
+            </tr>
+            <tr>
+              <td>Jianlin Zeng</td>
+              <td>2359984</td>
+              <td>Technical Logic & System Structure</td>
+              <td>Contributed to data flow, trigger logic, and architecture planning.</td>
+            </tr>
+            <tr>
+              <td>Mingyang Zou</td>
+              <td>2363214</td>
+              <td>Research & Evaluation</td>
+              <td>Collected references, supported user testing, and analyzed findings.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section id="stories">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">05. Story-rich Building Introduction Design</h2>
+        <p class="section-subtitle">
+          This section shows how our system explains what each building represents
+          and how it connects to student learning and campus experience.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Design Rationale</h3>
+      <p>
+        Many visitors can find buildings, but cannot understand their
+        <span class="highlight">academic meaning</span> or
+        <span class="highlight">student experience</span>.
+        Our system adds a storytelling layer to make each stop informative and memorable.
+      </p>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="story-top">
+          <h4>Foundational Building</h4>
+          <span class="story-badge">Core Teaching Hub</span>
+        </div>
+        <p>
+          This building represents the starting point of university learning.
+          It is where students develop <span class="highlight">foundation knowledge</span>
+          before entering more specialized study.
+        </p>
+        <p style="margin-top:10px;">
+          Students may study mathematics, academic English, and critical thinking here.
+          These modules support <span class="highlight-soft">university-level learning</span>.
+        </p>
+        <div class="keyword-row">
+          <span class="keyword">Foundation</span>
+          <span class="keyword">General Education</span>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-top">
+          <h4>Science Buildings (SA / SB / SC / SD)</h4>
+          <span class="story-badge">Science & Laboratory Zone</span>
+        </div>
+        <p>
+          This area represents the university’s
+          <span class="highlight">scientific and research environment</span>.
+        </p>
+        <p style="margin-top:10px;">
+          Students engage in lab-based learning in subjects such as biology,
+          chemistry, and environmental science. Learning here is both theoretical
+          and <span class="highlight-soft">hands-on</span>.
+        </p>
+        <div class="keyword-row">
+          <span class="keyword">Labs</span>
+          <span class="keyword">Experiments</span>
+          <span class="keyword">Research</span>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-top">
+          <h4>Central Building / Library</h4>
+          <span class="story-badge">Learning Commons</span>
+        </div>
+        <p>
+          The library reflects the culture of
+          <span class="highlight">independent learning</span>
+          and daily academic life.
+        </p>
+        <p style="margin-top:10px;">
+          Students use this space for studying, group discussion, and preparing assignments.
+          It is a shared learning environment for <span class="highlight-soft">all majors</span>.
+        </p>
+        <div class="keyword-row">
+          <span class="keyword">Study</span>
+          <span class="keyword">Collaboration</span>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-top">
+          <h4>IBSS Building</h4>
+          <span class="story-badge">Business & Management Education</span>
+        </div>
+        <p>
+          This building represents
+          <span class="highlight">business and management education</span>.
+        </p>
+        <p style="margin-top:10px;">
+          Students study areas such as finance, economics, and marketing.
+          The focus is on real-world business problems and
+          <span class="highlight-soft">future career preparation</span>.
+        </p>
+        <div class="keyword-row">
+          <span class="keyword">Business</span>
+          <span class="keyword">Finance</span>
+          <span class="keyword">Career</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:22px;">
+      <h3>Story-driven Interface Preview</h3>
+      <div class="visual-grid">
+        <div class="visual-box"><img src="images/story-popup.jpg" alt="Story popup"></div>
+        <div class="visual-box"><img src="images/building-card.jpg" alt="Building card"></div>
+        <div class="visual-box"><img src="images/story-flow.jpg" alt="Story flow"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Why This Matters</h3>
+      <p>
+        By linking buildings to <span class="highlight">learning</span> and
+        <span class="highlight">experience</span>, the system helps users understand
+        the campus more clearly and makes the visit more meaningful.
+      </p>
+    </div>
+  </section>
+
+  <!-- EVALUATION -->
+  <section id="evaluation">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">06. Evaluation & Reflection</h2>
+        <p class="section-subtitle">
+          We evaluated the alpha version with real users and refined the design based on feedback.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-6">
+        <div class="card">
+          <h3>Usability Testing</h3>
+          <p>
+            The prototype achieved a <span class="highlight">SUS score of 86.5</span>,
+            indicating high usability.
+          </p>
+          <ul class="clean" style="margin-top:10px;">
+            <li>Easy to understand</li>
+            <li>Clear navigation flow</li>
+            <li><span class="highlight-soft">Reduced user confusion</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <h3>Design Implications</h3>
+          <ul class="clean">
+            <li>Improve trigger visibility</li>
+            <li>Strengthen story explanation in building details</li>
+            <li>Further connect route planning with learning content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Evaluation Findings & Design Response</h3>
+      <p>
+        The evaluation was used not only to report usability, but also to decide what should be improved in the next iteration.
+      </p>
+      <div class="table-wrap" style="margin-top:18px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Evidence / Feedback</th>
+              <th>Interpretation</th>
+              <th>Design Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Some users were unsure when the story or AR mode would appear.</td>
+              <td>The trigger mechanism was useful but not visible enough.</td>
+              <td>Added clearer trigger indication and distance-based feedback.</td>
+            </tr>
+            <tr>
+              <td>Users preferred short explanations while walking.</td>
+              <td>Long text increases reading burden during physical navigation.</td>
+              <td>Reduced text density and strengthened audio-based building introductions.</td>
+            </tr>
+            <tr>
+              <td>Users wanted to know how buildings relate to majors and learning.</td>
+              <td>Navigation alone cannot fully support open-day decision making.</td>
+              <td>Added story-rich building cards linking spaces to courses, facilities, and student life.</td>
+            </tr>
+            <tr>
+              <td>The average SUS score was 86.5.</td>
+              <td>The overall interaction was usable, but detail-level clarity still needed refinement.</td>
+              <td>Improved visual hierarchy, progress tracking, and route-story connection.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Iterative Refinement</h3>
+      <div class="compare-grid">
+        <div class="compare-box">
+          <h4>Before</h4>
+          <p>
+            Earlier screens focused more on navigation mechanics and less on the meaning of places.
+          </p>
+          <div class="visual-box contain" style="margin-top:16px;min-height:180px;">
+            <img src="images/before-ui.jpg" alt="Before UI">
+          </div>
+        </div>
+
+        <div class="compare-box">
+          <h4>After</h4>
+          <p>
+            Later iterations improved structure, hierarchy, and the educational value of each stop.
+          </p>
+          <div class="visual-box contain" style="margin-top:16px;min-height:180px;">
+            <img src="images/after-ui.jpg" alt="After UI">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Final Reflection</h3>
+      <p>
+        This project shows that campus navigation is not only about movement,
+        but also about <span class="highlight">understanding</span> and belonging.
+        By embedding building stories into the route, we help visitors interpret the campus
+        as a real learning environment rather than a series of unknown spaces.
+      </p>
+      <p style="margin-top:12px;">
+        Future work could include richer verified building content, more personalized recommendations,
+        and expanded accessibility support.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- VIBE CODING -->
+  <section id="vibecoding">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">07. Vibe Coding & AI-assisted Process</h2>
+        <p class="section-subtitle">
+          This section reflects on how AI-assisted coding and design tools supported our prototype and portfolio development.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How We Used Vibe Coding</h3>
+      <p>
+        Vibe coding helped us quickly transform ideas into interface drafts, layout variations, and HTML/CSS prototypes.
+        However, we treated AI output as a starting point rather than a final design decision. Human-centered judgement,
+        user requirements, and evaluation evidence were still used to decide what should remain in the final prototype.
+      </p>
+
+      <div class="vibe-grid">
+        <div class="info-box">
+          <h4>Tools Used</h4>
+          <ul class="clean small">
+            <li>ChatGPT for structure, wording, and HTML/CSS refinement</li>
+            <li>Figma / prototype tools for interface layout</li>
+            <li>Image assets and visual references for presentation quality</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>What Worked</h4>
+          <ul class="clean small">
+            <li>Fast exploration of multiple layout options</li>
+            <li>Improved visual hierarchy and card-based structure</li>
+            <li>Helped convert design reasoning into clearer portfolio sections</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>What Did Not Work</h4>
+          <ul class="clean small">
+            <li>Some generated interfaces looked attractive but were too information-heavy</li>
+            <li>AI suggestions sometimes focused on style more than usability logic</li>
+            <li>Manual checking was needed to keep requirements, features, and evaluation aligned</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Reflection on AI-assisted Design</h3>
+      <div class="quote-box">
+        AI accelerated production, but it did not replace HCI thinking. The final design still depended on understanding users,
+        mapping requirements to features, collecting feedback, and making justified design decisions.
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Team</h2>
+        <p class="section-subtitle">
+          Group D-6 members and contribution areas.
+        </p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="images/member1.jpg" alt="Yixin Hao">
+        </div>
+        <h3>Yixin Hao</h3>
+        <p class="small">2362273</p>
+        <p class="small" style="margin-top:8px;">UI Design / Visual Refinement</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="images/member2.jpg" alt="Yizhi Wang">
+        </div>
+        <h3>Yizhi Wang</h3>
+        <p class="small">2364133</p>
+        <p class="small" style="margin-top:8px;">Front-end / Integration</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="images/member3.jpg" alt="Jianlin Zeng">
+        </div>
+        <h3>Jianlin Zeng</h3>
+        <p class="small">2359984</p>
+        <p class="small" style="margin-top:8px;">Architecture / Technical Logic</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="images/member4.jpg" alt="Mingyang Zou">
+        </div>
+        <h3>Mingyang Zou</h3>
+        <p class="small">2363214</p>
+        <p class="small" style="margin-top:8px;">Research / Evaluation / Analysis</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>XJTLU HCI Project · Process Portfolio · Group D-6 · Requirement-aligned UX Case Study</p>
+</footer>
+
+</body>
+</html>

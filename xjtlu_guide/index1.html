@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>校园导览系统</title>
+
+  <!-- 高德地图 -->
+  <script src="https://webapi.amap.com/maps?v=2.0&key=6f769aa869fe065d42863628055fabd3"></script>
+
+  <style>
+    #map { width: 100%; height: 90vh; }
+    #panel {
+      height: 10vh;
+      padding: 10px;
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<div id="panel">
+  <div>当前目标：<span id="target"></span></div>
+  <div>进度：<span id="progress"></span></div>
+</div>
+
+<script>
+
+// ================= 数据 =================
+const buildings = [
+  {
+    name: "Library",
+    location: [120.7401, 31.2735],
+    intro: "欢迎来到西浦图书馆"
+  },
+  {
+    name: "FB",
+    location: [120.7410, 31.2720],
+    intro: "这里是基础楼"
+  }
+];
+
+let visited = [];
+let currentTarget = null;
+let userPos = null;
+
+// ================= 地图初始化 =================
+const map = new AMap.Map("map", {
+  zoom: 17,
+  center: [120.739, 31.273]
+});
+
+// ================= 定位 =================
+AMap.plugin('AMap.Geolocation', function () {
+  const geolocation = new AMap.Geolocation({
+    enableHighAccuracy: true
+  });
+
+  geolocation.getCurrentPosition((status, result) => {
+    if (status === 'complete') {
+      userPos = result.position;
+      nextTarget();
+      startNavigation();
+    }
+  });
+});
+
+// ================= 找最近建筑 =================
+function getNearest() {
+  let min = Infinity;
+  let target = null;
+
+  buildings.forEach(b => {
+    if (visited.includes(b.name)) return;
+
+    const d = AMap.GeometryUtil.distance(userPos, b.location);
+
+    if (d < min) {
+      min = d;
+      target = b;
+    }
+  });
+
+  return target;
+}
+
+// ================= 切换目标 =================
+function nextTarget() {
+  currentTarget = getNearest();
+
+  if (!currentTarget) {
+    alert("导览完成！");
+    return;
+  }
+
+  document.getElementById("target").innerText = currentTarget.name;
+  updateProgress();
+}
+
+// ================= 路径导航 =================
+function startNavigation() {
+  AMap.plugin('AMap.Walking', function () {
+    const walking = new AMap.Walking();
+
+    walking.search(
+      userPos,
+      currentTarget.location
+    );
+  });
+
+  checkDistanceLoop();
+}
+
+// ================= 距离检测 =================
+function checkDistanceLoop() {
+  setInterval(() => {
+
+    if (!userPos || !currentTarget) return;
+
+    const d = AMap.GeometryUtil.distance(
+      userPos,
+      currentTarget.location
+    );
+
+    console.log("距离:", d);
+
+    if (d < 5) {
+      speak(currentTarget.intro);
+      visited.push(currentTarget.name);
+      nextTarget();
+      startNavigation();
+    }
+
+  }, 3000);
+}
+
+// ================= 语音 =================
+function speak(text) {
+  const msg = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(msg);
+}
+
+// ================= 进度条 =================
+function updateProgress() {
+  const percent = (visited.length / buildings.length * 100).toFixed(1);
+  document.getElementById("progress").innerText = percent + "%";
+}
+
+</script>
+
+</body>
+</html>
