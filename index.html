@@ -692,6 +692,130 @@ table th{
     min-height:220px;
   }
 }
+
+/* Tooltip and Modal Styles */
+.tooltip-trigger{
+  cursor:pointer;
+  position:relative;
+  transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tooltip-trigger:hover{
+  text-shadow:0 0 20px rgba(139, 92, 246, 0.8);
+  transform:scale(1.05);
+}
+
+.modal-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  opacity:0;
+  visibility:hidden;
+  transition:all 0.3s ease;
+}
+
+.modal-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.modal-content{
+  background:linear-gradient(135deg, rgba(75, 29, 149, 0.95), rgba(26, 27, 75, 0.95));
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:32px;
+  padding:40px;
+  max-width:600px;
+  width:90%;
+  box-shadow:0 25px 80px rgba(0,0,0,0.5);
+  backdrop-filter:blur(20px);
+  animation:popupBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position:relative;
+}
+
+@keyframes popupBounce{
+  0%{
+    transform:scale(0.3) rotate(-5deg);
+    opacity:0;
+  }
+  50%{
+    transform:scale(1.08) rotate(2deg);
+  }
+  100%{
+    transform:scale(1) rotate(0deg);
+    opacity:1;
+  }
+}
+
+.modal-content h2{
+  font-size:28px;
+  color:#f3e8ff;
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.modal-content p{
+  color:rgba(255,255,255,0.85);
+  line-height:1.8;
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+.modal-content .icon{
+  font-size:32px;
+  animation:iconFloat 2s ease-in-out infinite;
+}
+
+@keyframes iconFloat{
+  0%, 100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
+}
+
+.close-btn{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:#fff;
+  font-size:24px;
+  transition:all 0.3s ease;
+  font-weight:300;
+}
+
+.close-btn:hover{
+  background:rgba(255,255,255,0.2);
+  transform:rotate(90deg) scale(1.1);
+}
+
+.highlight-box{
+  background:rgba(139, 92, 246, 0.2);
+  border-left:3px solid #8b5cf6;
+  padding:12px 16px;
+  border-radius:8px;
+  margin:14px 0;
+  color:rgba(255,255,255,0.9);
+}
+
 </style>
 </head>
 <body>
@@ -714,17 +838,15 @@ table th{
 </nav>
 
 <header class="hero">
-  <h1>Where Tech Meets Heart</h1>
+  <h1>Where Tech Meets Heart: Your Magical Tour at XJTLU </h1>
   <p>
-    A campus exploration system that combines <span class="highlight">AR guidance</span>,
-    storytelling, geofenced triggers, and route planning to help high school graduates
+    A campus exploration system that combines storytelling, geofenced triggers, and route planning to help high school graduates
     and their families understand XJTLU in a more engaging and less stressful way.
   </p>
   <div class="hero-badges">
     <span class="badge">Track: Social</span>
-    <span class="badge">Platform: WeChat Mini Program / Web App</span>
-    <span class="badge">Core Tech: AR + Geofencing + Gaode API</span>
-    <span class="badge">Target Users: High School Graduates & Parents</span>
+    <span class="badge">Platform: Web App</span>
+    <span class="badge">Target Users: High School Graduates & Their Parents</span>
   </div>
 </header>
 
@@ -750,7 +872,7 @@ table th{
           <span class="highlight">playful and guided experience</span>.
         </p>
         <p style="margin-top:14px;font-size:15px;color:var(--muted);">
-          The experience combines building explanations, and story-driven interaction
+          The experience combines building explanations, and story-driven interaction,
           so users can understand not just where a place is, but why it matters.
         </p>
         <div class="keyword-row">
@@ -776,13 +898,13 @@ table th{
       <h3>Visual Snapshot</h3>
       <div class="visual-grid">
         <div class="visual-box">
-          <img src="images/ui-home.jpg" alt="Home interface">
+          <img src="images/map.png" alt="Home interface">
         </div>
         <div class="visual-box">
-          <img src="images/ui-route.jpg" alt="Route interface">
+          <img src="images/AR.png" alt="Route interface">
         </div>
         <div class="visual-box">
-          <img src="images/ui-ar.jpg" alt="AR interface">
+          <img src="images/explore.png" alt="AR interface">
         </div>
       </div>
     </div>
@@ -892,7 +1014,7 @@ table th{
       <h3>The Why</h3>
       <p>
         We chose the Social track because campus visits often create
-        <span class="highlight">cognitive overload</span>.
+        <span class="highlight tooltip-trigger" data-tooltip="cognitive-overload">cognitive overload</span>.
         Users must understand maps, routes, and building functions at the same time.
       </p>
       <p style="margin-top:12px;">
@@ -1121,7 +1243,6 @@ table th{
       <div class="visual-grid" style="margin-top:18px;">
         <div class="visual-box"><img src="images/evidence4.jpg" alt="Evidence 4"></div>
         <div class="visual-box"><img src="images/evidence5.jpg" alt="Evidence 5"></div>
-        <div class="visual-box"><img src="images/evidence6.png" alt="Evidence 6"></div>
       </div>
     </div>
 
@@ -1740,6 +1861,74 @@ table th{
 <footer class="footer">
   <p>XJTLU HCI Project · Process Portfolio · Group D-6 · Requirement-aligned UX Case Study</p>
 </footer>
+
+<!-- Cognitive Overload Tooltip Modal -->
+<div id="cognitive-overload-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <h2><span class="icon">🧠</span>Cognitive Overload</h2>
+    <p>
+      <strong>What is it?</strong> Cognitive overload occurs when the amount of information or tasks a person must process exceeds their working memory capacity. In the context of campus exploration, visitors are juggling multiple complex tasks simultaneously.
+    </p>
+    <div class="highlight-box">
+      <p><strong>The Challenge:</strong></p>
+      <p>When visiting a new campus, visitors must simultaneously:</p>
+      <ul style="margin-top:8px;margin-left:16px;">
+        <li>Navigate using a map while observing the physical environment</li>
+        <li>Remember the route to different buildings</li>
+        <li>Understand what each building's purpose and academic function</li>
+        <li>Maintain a mental map of campus layout</li>
+      </ul>
+    </div>
+    <p>
+      <strong>Our Solution:</strong> We reduce cognitive load by breaking down information delivery into bite-sized, context-aware pieces. When users approach a building, they automatically receive just the right information at the right time—story-rich descriptions, visual AR cues, and progress feedback—without requiring them to actively search or synthesize complex information.
+    </p>
+    <p>
+      This progressive disclosure approach ensures users can focus on exploration and experience rather than information processing, making the campus visit more memorable and engaging.
+    </p>
+  </div>
+</div>
+
+<script>
+function openModal(modalId){
+  const modal = document.getElementById(modalId + '-modal');
+  if(modal){
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(){
+  const modals = document.querySelectorAll('.modal-overlay.active');
+  modals.forEach(modal => modal.classList.remove('active'));
+  document.body.style.overflow = 'auto';
+}
+
+// Add click listeners to all tooltips
+document.querySelectorAll('.tooltip-trigger').forEach(trigger => {
+  trigger.addEventListener('click', function(e){
+    e.preventDefault();
+    const tooltipId = this.getAttribute('data-tooltip');
+    openModal(tooltipId);
+  });
+});
+
+// Close modal when clicking on overlay
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e){
+    if(e.target === this){
+      closeModal();
+    }
+  });
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    closeModal();
+  }
+});
+</script>
 
 </body>
 </html>
