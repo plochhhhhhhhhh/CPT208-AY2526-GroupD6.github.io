@@ -1841,6 +1841,49 @@ table th{
         mapping requirements to features, collecting feedback, and making justified design decisions.
       </div>
     </div>
+
+    <div class="card">
+      <h3>Technical Reflection on AI Use: Two Concrete Examples</h3>
+      <p style="margin-bottom:18px;">
+        To better understand how AI supported our work and where human judgment was essential, we reflect on two specific instances 
+        using a structured approach: the <span style="font-weight:600;">Prompt</span> (what we asked), 
+        the <span style="font-weight:600;">Outcome</span> (what AI provided), 
+        and the <span style="font-weight:600;">Action</span> (what we decided to do).
+      </p>
+
+      <div style="margin-top:18px;">
+        <h4 style="margin-bottom:14px;">Example 1: User Journey Map Structure</h4>
+        <div class="info-box" style="margin-bottom:14px;background:rgba(139,92,246,0.08);border-left:3px solid #8b5cf6;">
+          <p style="margin:0;color:var(--muted);"><span style="font-weight:700;">Prompt:</span> We wanted to design a visual user journey map showing how open-day visitors progress through emotional states and encounter pain points at different stages. We asked Claude to suggest a layout structure and information hierarchy.</p>
+        </div>
+        <div class="info-box" style="margin-bottom:14px;background:rgba(192,132,252,0.08);border-left:3px solid #c084fc;">
+          <p style="margin:0;color:var(--muted);"><span style="font-weight:700;">Outcome:</span> Claude generated a framework with four journey stages (START, NAVIGATE, DISCOVER, ACHIEVE), each with emotion tags and pain points. However, the suggested visual styling—with gradients, multiple colors, and decorative elements—created visual noise that conflicted with our design goal of clarity.</p>
+        </div>
+        <div class="info-box" style="margin-bottom:14px;background:rgba(99,102,241,0.08);border-left:3px solid #6366f1;">
+          <p style="margin:0;color:var(--muted);"><span style="font-weight:700;">Action:</span> We kept the logical structure (four stages, emotion tracking, pain points) but redesigned the visual treatment. We used the institute's primary color palette, applied consistent typography, and reduced visual complexity. This way, the journey map became a clear communication tool rather than a decorative element, directly supporting Requirement 1 (reduce navigation confusion).</p>
+        </div>
+      </div>
+
+      <div style="margin-top:22px;">
+        <h4 style="margin-bottom:14px;">Example 2: Portfolio Section Organization</h4>
+        <div class="info-box" style="margin-bottom:14px;background:rgba(139,92,246,0.08);border-left:3px solid #8b5cf6;">
+          <p style="margin:0;color:var(--muted);"><span style="font-weight:700;">Prompt:</span> Generate a comprehensive HTML structure for an HCI portfolio that documents iterative design, including sections for overview, research, requirements, ideation, technical implementation, and evaluation. Ensure the structure supports both narrative flow and evidence presentation.</p>
+        </div>
+        <div class="info-box" style="margin-bottom:14px;background:rgba(192,132,252,0.08);border-left:3px solid #c084fc;">
+          <p style="margin:0;color:var(--muted);"><span style="font-weight:700;">Outcome:</span> ChatGPT provided a complete HTML/CSS scaffold with styled cards, grids, and navigation. The initial structure was functional but treated all content equally—it lacked mechanisms to show the alignment between research findings, requirements, design decisions, and evaluation evidence. The sections felt disconnected rather than showing a coherent design process.</p>
+        </div>
+        <div class="info-box" style="margin-bottom:14px;background:rgba(99,102,241,0.08);border-left:3px solid #6366f1;">
+          <p style="margin:0;color:var(--muted);"><span style="font-weight:700;">Action:</span> We retained the CSS framework and basic card layout but restructured the content flow. We added the Requirement → Design Goal → System Feature Mapping table and the Logic Chain diagram to explicitly show how research informed design decisions. We also created distinct visual grouping for Personas, Accessibility, and Web Demo within the Research section. This transformation made the portfolio teach HCI process (understanding → design → evaluation) rather than just present features.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:22px;color:var(--soft);font-size:15px;">
+        Both examples demonstrate that AI is most effective when used to accelerate routine tasks (formatting, structuring, generating variations) 
+        while human designers maintain control over decisions that align with research, requirements, and user needs. The portfolio itself 
+        is evidence of this principle: it presents a coherent design process only because we actively shaped the information architecture 
+        beyond what AI suggested.
+      </p>
+    </div>
   </section>
 
   <!-- TEAM -->
@@ -1913,7 +1956,7 @@ table th{
         </a>
       </p>
       <p class="small" style="margin-top:10px;">
-        Used for generating the format of “Figure 2 User Journey Map”.
+        Used for generating the format of User Journey Map.
       </p>
       <p class="small" style="margin-top:18px;">
         Gemini 3 Flash, Google DeepMind, knowledge cutoff: dynamic (real-time training data up to 2026), accessed on 2026-04-22, available at 
