@@ -558,6 +558,89 @@ table th{
   display:block;
 }
 
+
+.timeline{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.timeline-step{
+  position:relative;
+  background:rgba(255,255,255,0.055);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:22px;
+  padding:20px;
+  min-height:210px;
+}
+
+.timeline-step::before{
+  content:"";
+  position:absolute;
+  top:24px;
+  left:20px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#c084fc,#6366f1);
+  box-shadow:0 0 0 6px rgba(139,92,246,0.16);
+}
+
+.timeline-step h4{
+  padding-left:24px;
+  margin-bottom:10px;
+}
+
+.timeline-step p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.align-table td:first-child,
+.align-table td:nth-child(2),
+.align-table td:nth-child(3){
+  width:25%;
+}
+
+.logic-chain{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+
+.logic-box{
+  min-height:120px;
+  border-radius:20px;
+  padding:18px;
+  background:rgba(255,255,255,0.055);
+  border:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+}
+
+.ethics-grid,
+.vibe-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.quote-box{
+  border-left:4px solid rgba(192,132,252,0.72);
+  background:rgba(255,255,255,0.045);
+  border-radius:18px;
+  padding:18px;
+  color:var(--muted);
+  height:100%;
+}
+
+@media(max-width:1100px){
+  .timeline,.logic-chain,.ethics-grid,.vibe-grid{grid-template-columns:1fr;}
+}
+
 .footer{
   text-align:center;
   color:var(--soft);
@@ -617,12 +700,15 @@ table th{
   <h2>Group D-6</h2>
   <div class="nav-links">
     <a href="#overview">Overview</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#alignment">Alignment</a>
     <a href="#motivation">Research</a>
     <a href="#requirements">Requirements</a>
     <a href="#ideation">Ideation</a>
     <a href="#technical">Technical</a>
     <a href="#stories">Stories</a>
     <a href="#evaluation">Evaluation</a>
+    <a href="#vibecoding">Vibe Coding</a>
     <a href="#team">Team</a>
   </div>
 </nav>
@@ -662,12 +748,9 @@ table th{
         <p style="font-size:16px;">
           Our project transforms campus exploration into a
           <span class="highlight">playful and guided experience</span>.
-          Instead of relying only on maps, users receive
-          <span class="highlight-soft">location-based information automatically</span>
-          when they approach key campus buildings.
         </p>
         <p style="margin-top:14px;font-size:15px;color:var(--muted);">
-          The experience combines route guidance, building explanations, and story-driven interaction
+          The experience combines building explanations, and story-driven interaction
           so users can understand not just where a place is, but why it matters.
         </p>
         <div class="keyword-row">
@@ -689,25 +772,6 @@ table th{
       </div>
     </div>
 
-    <div class="metrics">
-      <div class="metric-card">
-        <h3>15m</h3>
-        <p>Auto-trigger distance</p>
-      </div>
-      <div class="metric-card">
-        <h3>2</h3>
-        <p>Navigation modes</p>
-      </div>
-      <div class="metric-card">
-        <h3>3</h3>
-        <p>Alpha testers</p>
-      </div>
-      <div class="metric-card">
-        <h3>86.5</h3>
-        <p>Average SUS score</p>
-      </div>
-    </div>
-
     <div class="card" style="margin-top:22px;">
       <h3>Visual Snapshot</h3>
       <div class="visual-grid">
@@ -722,6 +786,95 @@ table th{
         </div>
       </div>
     </div>
+
+    <div class="card" id="timeline" style="margin-top:22px;">
+      <h3>Process Timeline</h3>
+      <p>
+        The timeline below explains how our project moved from initial research to final prototype refinement.
+        It also makes the connection between requirement discovery, design decisions, and evaluation more visible.
+      </p>
+      <div class="timeline">
+        <div class="timeline-step">
+          <h4>Week 1<br>Problem Framing</h4>
+          <p>Observed open-day campus visiting scenarios and identified that visitors need both directions and contextual understanding.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 2<br>User Research</h4>
+          <p>Defined primary and secondary users, created personas, and summarized key pain points from informal interviews and observations.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 3<br>Requirements</h4>
+          <p>Translated research findings into R1–R4 requirements, focusing on navigation clarity, building meaning, engagement, and low information burden.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 4<br>Prototyping</h4>
+          <p>Produced low-fi sketches, compared design alternatives, and selected a dynamic map/AR toggle to balance clarity and immersion.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 5<br>Evaluation</h4>
+          <p>Collected SUS scores and qualitative feedback from alpha testing, then identified problems in trigger visibility and story presentation.</p>
+        </div>
+        <div class="timeline-step">
+          <h4>Week 6<br>Iteration</h4>
+          <p>Refined hierarchy, route-story connection, audio support, and portfolio presentation to better align with HCI process evidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="alignment" style="margin-top:22px;">
+      <h3>Requirement → Design Goal → System Feature Mapping</h3>
+      <p>
+        To keep the portfolio logically aligned, we numbered the user requirements and mapped them to design goals,
+        prototype features, and evaluation evidence.
+      </p>
+      <div class="table-wrap" style="margin-top:18px;">
+        <table class="align-table">
+          <thead>
+            <tr>
+              <th>User Requirement</th>
+              <th>Design Goal</th>
+              <th>System Feature</th>
+              <th>Evaluation Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>R1:</strong> Reduce navigation confusion for first-time campus visitors.</td>
+              <td><strong>DG1:</strong> Lower cognitive load during movement.</td>
+              <td><strong>F1:</strong> Smart route guidance with map-based navigation.</td>
+              <td>Users reported that the route flow was easy to follow during alpha testing.</td>
+            </tr>
+            <tr>
+              <td><strong>R2:</strong> Help users understand what each building is used for.</td>
+              <td><strong>DG2:</strong> Connect physical spaces with academic meaning.</td>
+              <td><strong>F2:</strong> Story-rich building cards and audio introductions.</td>
+              <td>Feedback showed that users wanted more major-related and facility-related explanations.</td>
+            </tr>
+            <tr>
+              <td><strong>R3:</strong> Make campus exploration more engaging and memorable.</td>
+              <td><strong>DG3:</strong> Turn passive touring into interactive discovery.</td>
+              <td><strong>F3:</strong> AR overlay, progress tracking, and completion feedback.</td>
+              <td>Users described the AR/story mode as more attractive than a normal map.</td>
+            </tr>
+            <tr>
+              <td><strong>R4:</strong> Avoid overwhelming users with too much text or manual searching.</td>
+              <td><strong>DG4:</strong> Provide timely information only when it is needed.</td>
+              <td><strong>F4:</strong> Geofenced auto-triggered content when users approach a building.</td>
+              <td>Iteration focused on reducing text density and improving trigger visibility.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="logic-chain">
+        <div class="logic-box"><h4>Research</h4><p class="small">Visitors feel lost and overloaded.</p></div>
+        <div class="logic-box"><h4>Requirement</h4><p class="small">Clearer route and building meaning.</p></div>
+        <div class="logic-box"><h4>Design Goal</h4><p class="small">Lower burden, increase engagement.</p></div>
+        <div class="logic-box"><h4>Feature</h4><p class="small">AR, story, progress, auto-trigger.</p></div>
+        <div class="logic-box"><h4>Evaluation</h4><p class="small">SUS and feedback guide iteration.</p></div>
+      </div>
+    </div>
+
   </section>
 
   <!-- RESEARCH -->
@@ -730,7 +883,7 @@ table th{
       <div>
         <h2 class="section-title">01. Motivation & Research</h2>
         <p class="section-subtitle">
-          Understanding why campus navigation can feel stressful and who our design is really for.
+         Given that nowadays,
         </p>
       </div>
     </div>
@@ -738,8 +891,9 @@ table th{
     <div class="card">
       <h3>The Why</h3>
       <p>
-        Given that we chose D topic at first, we wanted to explore how technology can support a more human-centered campus exploration experience.
-         We found that many existing solutions focus on navigation efficiency but often overlook the emotional and experiential aspects of visiting a campus for the first time.
+        We chose the Social track because campus visits often create
+        <span class="highlight">cognitive overload</span>.
+        Users must understand maps, routes, and building functions at the same time.
       </p>
       <p style="margin-top:12px;">
         Our design focuses on helping users understand
@@ -837,50 +991,43 @@ table th{
     <div class="card">
       <h3>Stakeholders & Personas</h3>
 
-      <div class="card">
-        <h3>Stakeholders & Personas</h3>
-      
-        <!-- ① Stakeholders 在上 -->
-        <div style="margin-bottom:20px;">
-          <h4>Stakeholders</h4>
-          <ul class="clean">
-            <li><strong>Primary users:</strong> high school graduates visiting campus</li>
-            <li><strong>Secondary users:</strong> parents and first-time visitors</li>
-            <li><strong>Other stakeholders:</strong> student ambassadors and university staff</li>
-          </ul>
-        </div>
-      
-        <!-- ② Persona 在下 -->
-        <div>
-          <h4>Personas</h4>
-      
-          <p class="small" style="margin-bottom:14px;">
-            Our system supports two key user groups:
-            <span class="highlight">students</span> exploring majors,
-            and <span class="highlight">parents</span> evaluating environment and facilities.
-          </p>
-      
-          <!-- Persona 图片（纵向） -->
-          <div class="persona-pair" style="grid-template-columns:1fr;gap:18px;">
-      
-            <div>
-              <h4 style="margin-bottom:6px;">Student Persona</h4>
-              <div class="persona-box">
-                <img src="images/persona-student.jpg">
-              </div>
+      <div style="margin-bottom:22px;">
+        <h4>Stakeholders</h4>
+        <p class="small" style="margin-bottom:12px;">
+          We considered different stakeholders because the open-day experience is not only used by students,
+          but also influenced by parents, ambassadors, and university staff.
+        </p>
+        <ul class="clean">
+          <li><strong>Primary users:</strong> high school graduates who want to explore majors, buildings, study spaces, and campus life.</li>
+          <li><strong>Secondary users:</strong> parents and first-time visitors who care about safety, learning environment, and facilities.</li>
+          <li><strong>Other stakeholders:</strong> student ambassadors and university staff who need to communicate campus information clearly.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Personas</h4>
+        <p class="small" style="margin-bottom:14px;">
+          The student persona highlights exploration and major choice, while the parent persona highlights trust,
+          environment, and practical campus information.
+        </p>
+
+        <div class="persona-pair" style="grid-template-columns:1fr;gap:18px;">
+          <div>
+            <h4 style="margin-bottom:6px;">Student Persona</h4>
+            <div class="persona-box">
+              <img src="images/persona-student.jpg" alt="Student persona">
             </div>
-      
-            <div>
-              <h4 style="margin-bottom:6px;">Parent Persona</h4>
-              <div class="persona-box">
-                <img src="images/persona-parent.jpg">
-              </div>
-            </div>
-      
           </div>
-      
+
+          <div>
+            <h4 style="margin-bottom:6px;">Parent Persona</h4>
+            <div class="persona-box">
+              <img src="images/persona-parent.jpg" alt="Parent persona">
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   </section>
 
   <!-- REQUIREMENTS -->
@@ -974,9 +1121,33 @@ table th{
       <div class="visual-grid" style="margin-top:18px;">
         <div class="visual-box"><img src="images/evidence4.jpg" alt="Evidence 4"></div>
         <div class="visual-box"><img src="images/evidence5.jpg" alt="Evidence 5"></div>
-        <div class="visual-box"><img src="images/video-qr.jpg" alt="Video QR"></div>
+        <div class="visual-box"><img src="images/evidence6.png" alt="Evidence 6"></div>
       </div>
     </div>
+
+
+    <div class="card" id="ethics">
+      <h3>Ethical Considerations</h3>
+      <p>
+        Because our process involved user feedback, photos, and observation, we considered ethics before collecting evidence.
+        This helps make the portfolio process more responsible and transparent.
+      </p>
+      <div class="ethics-grid">
+        <div class="info-box">
+          <h4>Informed Consent</h4>
+          <p class="small">Participants were informed about the purpose of the study before interviews, testing, or photo recording. Participation was voluntary.</p>
+        </div>
+        <div class="info-box">
+          <h4>Privacy Protection</h4>
+          <p class="small">Personal identities are not shown in the final portfolio unless permission is given. Feedback is summarized rather than exposing private details.</p>
+        </div>
+        <div class="info-box">
+          <h4>Responsible Location Use</h4>
+          <p class="small">The prototype uses location only for nearby building triggers. The design does not require permanent storage of users' movement history.</p>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- IDEATION -->
@@ -1009,7 +1180,11 @@ table th{
 
     <div class="card">
       <h3>Design Alternatives</h3>
-      <div class="alt-grid">
+      <p>
+        We did not choose the final layout only because it looked better. We compared alternatives based on cognitive load,
+        route awareness, and whether users could still observe the real campus while receiving guidance.
+      </p>
+      <div class="alt-grid" style="margin-top:18px;">
         <div class="alt-card">
           <h4>Option A: Split Screen</h4>
           <p class="small">
@@ -1151,7 +1326,7 @@ table th{
       <div class="col-6">
         <div class="card">
           <h3>Prototype Links</h3>
-          <p><strong>Figma Prototype:</strong> Replace with your clickable Figma link</p>
+          <p><strong>Figma Prototype:</strong> https://www.figma.com/make/zAlDD24fINHjJgL6vvyKog/Design-WeChat-Mini-Program?t=9GTnhCyllxKmVOKq-1&preview-route=%2Fbuilding</p>
           <p style="margin-top:10px;"><strong>Hosted System:</strong> Replace with your deployed project link</p>
           <p style="margin-top:10px;"><strong>Source Repository:</strong> Replace with your GitHub link</p>
         </div>
@@ -1374,6 +1549,46 @@ table th{
     </div>
 
     <div class="card">
+      <h3>Evaluation Findings & Design Response</h3>
+      <p>
+        The evaluation was used not only to report usability, but also to decide what should be improved in the next iteration.
+      </p>
+      <div class="table-wrap" style="margin-top:18px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Evidence / Feedback</th>
+              <th>Interpretation</th>
+              <th>Design Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Some users were unsure when the story or AR mode would appear.</td>
+              <td>The trigger mechanism was useful but not visible enough.</td>
+              <td>Added clearer trigger indication and distance-based feedback.</td>
+            </tr>
+            <tr>
+              <td>Users preferred short explanations while walking.</td>
+              <td>Long text increases reading burden during physical navigation.</td>
+              <td>Reduced text density and strengthened audio-based building introductions.</td>
+            </tr>
+            <tr>
+              <td>Users wanted to know how buildings relate to majors and learning.</td>
+              <td>Navigation alone cannot fully support open-day decision making.</td>
+              <td>Added story-rich building cards linking spaces to courses, facilities, and student life.</td>
+            </tr>
+            <tr>
+              <td>The average SUS score was 86.5.</td>
+              <td>The overall interaction was usable, but detail-level clarity still needed refinement.</td>
+              <td>Improved visual hierarchy, progress tracking, and route-story connection.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
       <h3>Iterative Refinement</h3>
       <div class="compare-grid">
         <div class="compare-box">
@@ -1410,6 +1625,63 @@ table th{
         Future work could include richer verified building content, more personalized recommendations,
         and expanded accessibility support.
       </p>
+    </div>
+  </section>
+
+
+  <!-- VIBE CODING -->
+  <section id="vibecoding">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">07. Vibe Coding & AI-assisted Process</h2>
+        <p class="section-subtitle">
+          This section reflects on how AI-assisted coding and design tools supported our prototype and portfolio development.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How We Used Vibe Coding</h3>
+      <p>
+        Vibe coding helped us quickly transform ideas into interface drafts, layout variations, and HTML/CSS prototypes.
+        However, we treated AI output as a starting point rather than a final design decision. Human-centered judgement,
+        user requirements, and evaluation evidence were still used to decide what should remain in the final prototype.
+      </p>
+
+      <div class="vibe-grid">
+        <div class="info-box">
+          <h4>Tools Used</h4>
+          <ul class="clean small">
+            <li>ChatGPT for structure, wording, and HTML/CSS refinement</li>
+            <li>Figma / prototype tools for interface layout</li>
+            <li>Image assets and visual references for presentation quality</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>What Worked</h4>
+          <ul class="clean small">
+            <li>Fast exploration of multiple layout options</li>
+            <li>Improved visual hierarchy and card-based structure</li>
+            <li>Helped convert design reasoning into clearer portfolio sections</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>What Did Not Work</h4>
+          <ul class="clean small">
+            <li>Some generated interfaces looked attractive but were too information-heavy</li>
+            <li>AI suggestions sometimes focused on style more than usability logic</li>
+            <li>Manual checking was needed to keep requirements, features, and evaluation aligned</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Reflection on AI-assisted Design</h3>
+      <div class="quote-box">
+        AI accelerated production, but it did not replace HCI thinking. The final design still depended on understanding users,
+        mapping requirements to features, collecting feedback, and making justified design decisions.
+      </div>
     </div>
   </section>
 
@@ -1466,7 +1738,7 @@ table th{
 </main>
 
 <footer class="footer">
-  <p>XJTLU HCI Project · Process Portfolio · Group D-6</p>
+  <p>XJTLU HCI Project · Process Portfolio · Group D-6 · Requirement-aligned UX Case Study</p>
 </footer>
 
 </body>
